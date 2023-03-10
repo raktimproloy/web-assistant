@@ -4,11 +4,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chatting Web App</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"><!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="shortcut icon" href="imgs/fav/fav.svg" type="image/x-icon">
 </head>
 <body>
-    <h1>
-        This is comes from Joshim's Branch
-    </h1>
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center h-100">
+            <div class="col-md-8 col-xl-6 chat">
+                <div class="card">
+                    <div class="card-header msg_head">
+                        <div class="d-flex bd-highlight">
+                            <div class="img_cont">
+                                <img src="./assets/imgs/Logo.jpeg" class="rounded-circle user_img">
+                                <span class="online_icon"></span>
+                            </div>
+                            <div class="user_info">
+                                <span class="username">Khalid</span>
+                                <p>Online</p>
+                            </div>
+                            <div class="video_cam">
+                                <span><i class="fa fa-video-camera" aria-hidden="true"></i></span>
+                                <span><i class="fa fa-phone" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        <span id="action_menu_btn"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                        <div class="action_menu">
+                            <ul>
+                                <li><i class="fa fa-user" aria-hidden="true"></i> View profile</li>
+                                <li><i class="fa fa-user-plus" aria-hidden="true"></i> Add to close friends</li>
+                                <li><i class="fa fa-users" aria-hidden="true"></i> Add to group</li>
+                                <li><i class="fa fa-ban" aria-hidden="true"></i> Block</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body msg_card_body">
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="./assets/imgs/Logo.jpeg" class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                                Kire kmn achis Joshim?
+                               
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="msg_cotainer_send">
+                               Alhamdulillah valo........tr ki kbr? tr th dkhy jay na....
+                               
+                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="./assets/imgs/Logo.jpeg" class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                                Ei th asi mutamuti ...... gram e chilam re
+                                
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="msg_cotainer_send">
+                                aaaaaao.......town e aichis?
+                               
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="./assets/imgs/Logo.jpeg" class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                               ha matro ashlam
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="msg_cotainer_send">
+                               tyle ai amadr ekhane ghure jah.......
+                               
+                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="./assets/imgs/Logo.jpeg" class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                               dara th ektu............call ashche
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text attach_btn"><span class="material-icons">
+                                    attachment
+                                    </span></span>
+                            </div>
+                            <textarea id="sendMessageInput" name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                            <div class="input-group-append">
+                                <span class="input-group-text send_btn">
+                                    <span id="sendMessageBtn" class="material-icons">
+                                    send
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./assets//js/main.js"></script>
 </body>
 </html>
