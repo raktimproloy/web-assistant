@@ -1,6 +1,8 @@
 const sendMessageInput = document.getElementById("sendMessageInput")
 const sendMessageBtn = document.getElementById("sendMessageBtn")
 
+
+
 sendMessageBtn.addEventListener("click", () => {
     getData()
 })
@@ -15,31 +17,37 @@ function getData(){
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${getFirstWord}`)
         .then(response => response.json())
         .then(data => {
-            var large = {}
-            var largeLength = 0
-            largeLength = data[0].meanings[0].definitions.length
-            large = data[0].meanings[0]
+            const newData = []
 
-            // console.log(largeLength);
             data.forEach(element => {
-                // for(let i = 1; i < element.meanings.length; i ++){
-                //     console.log("new under",element.meanings[i]);
-                // }
+                
                 element.meanings.forEach(underData => {
-                    console.log("under",underData);
-                    if(underData.definitions.length > large.definitions.length){
-                        large = underData
-                    }
+                    const newObj = {partOfSpeech: underData.partOfSpeech, definitions: underData.definitions.length}
+                    newData.push(newObj)
+                    
                 })
             });
+
+            const counts = newData.reduce((acc, cur) => {
+                acc[cur.partOfSpeech] = (acc[cur.partOfSpeech] || 0) + cur.definitions;
+                return acc;
+              }, {});
+              
+            const newPartOfSpeechFreshArray = Object.entries(counts).map(([partOfSpeech, definitions]) => ({ partOfSpeech, definitions }));
             
-            // console.log("Data",data);
-            // console.log("Large",large);
-            if(large.partOfSpeech === "verb"){
-                console.log("This is a question. it started with verb");
-                questionHandler(message)
-            }else if(whQues.includes(getFirstWord)){
+            let largeObj = newPartOfSpeechFreshArray[0]
+
+            newPartOfSpeechFreshArray.forEach(newData => {
+                if(newData.definitions > largeObj.definitions){
+                    largeObj = newData
+                }
+            })
+            
+            if(whQues.includes(getFirstWord)){
                 console.log("This is a question. it started with WH question");
+                questionHandler(message)
+            }else if(largeObj.partOfSpeech === "verb"){
+                console.log("This is a question. it started with verb");
                 questionHandler(message)
             }else{
                 console.log("This is not a question");
@@ -52,7 +60,33 @@ function getData(){
 function questionHandler(question){
     if(question.includes("your name")){
         console.log("my name is web-assistant");
-    }
-    
+    } 
 }
 
+function sumDefinitionsByPartOfSpeech(arr) {
+    const sumObj = {};
+    for (const obj of arr) {
+      const { partOfSpeech, definitions } = obj;
+      if (!sumObj[partOfSpeech]) {
+        sumObj[partOfSpeech] = definitions;
+      } else {
+        sumObj[partOfSpeech] = sumObj[partOfSpeech].concat(definitions);
+      }
+    }
+    const result = [];
+    const seen = new Set();
+    for (const obj of arr) {
+      const { partOfSpeech } = obj;
+      if (!seen.has(partOfSpeech)) {
+        seen.add(partOfSpeech);
+        result.push({
+          partOfSpeech,
+          definitions: sumObj[partOfSpeech],
+          synonyms: [],
+          antonyms: []
+        });
+      }
+    }
+    return result;
+  }
+  
