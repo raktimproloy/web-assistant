@@ -20,7 +20,7 @@ function getData(){
             largeLength = data[0].meanings[0].definitions.length
             large = data[0].meanings[0]
 
-            // console.log(largeLength);
+            console.log(data);
             data.forEach(element => {
                 // for(let i = 1; i < element.meanings.length; i ++){
                 //     console.log("new under",element.meanings[i]);
@@ -52,7 +52,6 @@ function getData(){
 function questionHandler(question){
     if(question.includes("your name")){
         console.log("my name is web-assistant");
-    }
-    
+    } 
 }
 
